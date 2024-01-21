@@ -17,7 +17,10 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.developer.gbuttons.GoogleSignInButton
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
@@ -27,6 +30,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
+
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginEmail: EditText
@@ -34,10 +38,10 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginButton: Button
     private lateinit var signupRedirectText: TextView
     private lateinit var forgotPassword: TextView
-
+    private lateinit var googleBtn: GoogleSignInButton
     private lateinit var auth: FirebaseAuth
     private lateinit var gOptions: GoogleSignInOptions
-
+    private lateinit var gClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         signupRedirectText.setOnClickListener {
-            startActivity(Intent(this@LoginActivity, SignupActivity::class.kt))
+            startActivity(Intent(this@LoginActivity, SignupActivity::class.java))
         }
 
         forgotPassword.setOnClickListener {
@@ -104,7 +108,9 @@ class LoginActivity : AppCompatActivity() {
                     }
                 })
             }
-
+            dialogView.findViewById<View>(R.id.btnCancel).setOnClickListener {
+                dialog.dismiss()
+            }
             if (dialog.window != null) {
                 dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
             }
@@ -112,17 +118,21 @@ class LoginActivity : AppCompatActivity() {
         }
 
         gOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+        gClient = GoogleSignIn.getClient(this, gOptions)
 
-
-
-
+        val gAccount: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
+        if (gAccount != null) {
+            finish()
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         val activityResultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult(),
                 ActivityResultCallback { result: ActivityResult ->
                     if (result.resultCode == Activity.RESULT_OK) {
                         val data = result.data
-
+                        val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                         try {
                             task.getResult(ApiException::class.java)
                             finish()
@@ -134,6 +144,9 @@ class LoginActivity : AppCompatActivity() {
                     }
                 })
 
-
+        googleBtn.setOnClickListener {
+            val signInIntent = gClient.signInIntent
+            activityResultLauncher.launch(signInIntent)
+        }
     }
 }
