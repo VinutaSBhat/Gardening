@@ -13,9 +13,10 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
+
 class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
+    private  var auth = FirebaseAuth.getInstance()
     private lateinit var signupEmail: EditText
     private lateinit var signupPassword: EditText
     private lateinit var signupButton: Button
