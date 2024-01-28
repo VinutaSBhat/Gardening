@@ -38,9 +38,8 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_add_24"
-        android:id="@+id/post"
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="40dp"
-        app:tint ="@color/green"/>
+        app:tint ="@color/lavender"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

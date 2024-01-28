@@ -38,8 +38,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var forgotPassword: TextView
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var gOptions: GoogleSignInOptions
-    private lateinit var gClient: GoogleSignInClient
+//    private lateinit var gOptions: GoogleSignInOptions
+//    private lateinit var gClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,32 +115,32 @@ class LoginActivity : AppCompatActivity() {
             dialog.show()
         }
 
-        gOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
-        gClient = GoogleSignIn.getClient(this, gOptions)
+//        gOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+//        gClient = GoogleSignIn.getClient(this, gOptions)
 
-        val gAccount: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
-        if (gAccount != null) {
-            finish()
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-            startActivity(intent)
-        }
+//        val gAccount: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
+//        if (gAccount != null) {
+//            finish()
+//            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+//            startActivity(intent)
+//        }
 
-        val activityResultLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult(),
-                ActivityResultCallback { result: ActivityResult ->
-                    if (result.resultCode == Activity.RESULT_OK) {
-                        val data = result.data
-                        val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-                        try {
-                            task.getResult(ApiException::class.java)
-                            finish()
-                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            startActivity(intent)
-                        } catch (e: ApiException) {
-                            Toast.makeText(this@LoginActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                })
+//        val activityResultLauncher =
+//            registerForActivityResult(ActivityResultContracts.StartActivityForResult(),
+//                ActivityResultCallback { result: ActivityResult ->
+//                    if (result.resultCode == Activity.RESULT_OK) {
+//                        val data = result.data
+//                        val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+//                        try {
+//                            task.getResult(ApiException::class.java)
+//                            finish()
+//                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+//                            startActivity(intent)
+//                        } catch (e: ApiException) {
+//                            Toast.makeText(this@LoginActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
+//                        }
+//                    }
+//                })
 
 
     }
