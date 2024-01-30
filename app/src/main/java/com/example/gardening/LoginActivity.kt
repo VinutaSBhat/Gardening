@@ -17,9 +17,9 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
+
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
+
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
@@ -53,6 +53,13 @@ class LoginActivity : AppCompatActivity() {
 
 
         auth = FirebaseAuth.getInstance()
+
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // User is already logged in, navigate to MainActivity
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            finish()
+        }
 
         loginButton.setOnClickListener {
             val email = loginEmail.text.toString()
