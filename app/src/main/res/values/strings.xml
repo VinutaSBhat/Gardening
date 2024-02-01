@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">happie gardener</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="tick_mark">tick</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="date">A thin wrapper around a millisecond value that allows JDBC to identify this as an SQL DATE
         value. A milliseconds value represents the number of milliseconds that have passed since January 1, 1970 00:00:00.000 GMT.
