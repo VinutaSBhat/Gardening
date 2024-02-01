@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 
-class MarketFragment : Fragment() {
+class CartFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
 
@@ -16,7 +16,7 @@ class MarketFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_market, container, false)
+        return inflater.inflate(R.layout.fragment_cart, container, false)
     }
 
 

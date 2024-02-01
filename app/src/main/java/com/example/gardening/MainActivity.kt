@@ -2,21 +2,9 @@ package com.example.gardening
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.gardening.databinding.ActivityMainBinding
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,7 +28,7 @@ private lateinit var binding: ActivityMainBinding
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
-                R.id.market -> replaceFragment(MarketFragment())
+                R.id.cart -> replaceFragment(CartFragment())
                 R.id.community -> replaceFragment(communityFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
 

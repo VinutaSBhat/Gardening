@@ -1,6 +1,7 @@
 package com.example.gardening
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -50,6 +51,8 @@ class LoginActivity : AppCompatActivity() {
         loginButton = findViewById(R.id.login_button)
         signupRedirectText = findViewById(R.id.signUpRedirectText)
         forgotPassword = findViewById(R.id.forgot_password)
+        val sharedPref = getSharedPreferences("addName", Context.MODE_PRIVATE)
+        var edit = sharedPref.edit()
 
 
         auth = FirebaseAuth.getInstance()
@@ -60,6 +63,9 @@ class LoginActivity : AppCompatActivity() {
 
             if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 if (!pass.isEmpty()) {
+                    edit.putString("email",email.toString())
+                    edit.commit()
+                    Toast.makeText(this, "Data Saved",Toast.LENGTH_LONG).show()
                     auth.signInWithEmailAndPassword(email, pass)
                         .addOnSuccessListener(OnSuccessListener<AuthResult> {
                             Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()

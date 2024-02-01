@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailedActivity">
+
+    <TextView
+        android:id="@+id/detailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/alice"
+        android:text="Title"
+        android:textColor="@color/green"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/detailImage"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:src="@drawable/bonsai"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailTitle" />
+
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alice"
+        android:padding="20dp"
+        android:text="Price:Rs.250"
+        android:textColor="@color/green"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailImage" />
+
+    <TextView
+        android:id="@+id/detailDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/alice"
+        android:padding="20dp"
+        android:text="Description"
+        android:textColor="@color/green"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#CB10F842"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        tools:layout_editor_absoluteX="0dp">
+
+        <ImageView
+            android:id="@+id/cartminus"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_baseline_remove_circle_outline_24" />
+
+
+        <TextView
+            android:id="@+id/carttext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/cartminus"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/cartplus"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/carttext"
+            android:src="@drawable/ic_baseline_add_circle_outline_24" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addtocart"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="235dp"
+            android:layout_marginTop="8dp"
+
+            android:background="@drawable/cartdetailed"
+            android:text="Add To Cart" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
