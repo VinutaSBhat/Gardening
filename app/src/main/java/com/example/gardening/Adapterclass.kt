@@ -45,6 +45,7 @@ class MyAdapter(private val context: Context, private var dataList: List<Datacla
     }
 
     override fun getItemCount(): Int {
+
         return dataList.size
     }
 }

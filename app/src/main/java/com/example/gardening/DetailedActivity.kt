@@ -90,40 +90,19 @@ auth=FirebaseAuth.getInstance()
 
     private fun addedtocart() {
 
-            val calForDate = Calendar.getInstance()
+        val cartItem = cartmodel(
+            intent.getIntExtra("Image", 0),
+            intent.getStringExtra("Title") ?: "",
+            "1", // You may set a default quantity here
+            intent.getStringExtra("Price") ?: ""
+        )
 
-            val currentDate = SimpleDateFormat("MM dd, yyyy", Locale.getDefault())
-            val saveCurrentDate = currentDate.format(calForDate.time)
+        // Add the item to the cart
+        ShoppingCart.addedtocart(cartItem)
 
-            val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-            val saveCurrentTime = currentTime.format(calForDate.time)
-
-            val cartMap = hashMapOf(
-                "Title" to view.dataTitle,
-                "productPrice" to view.dataprice,
-                "currentDate" to saveCurrentDate,
-                "currentTime" to saveCurrentTime,
-                "totalQuantity" to quantity.text.toString(),
-                "totalPrice" to totalprice
-            )
-
-        val currentUserUid = auth.currentUser?.uid
-
-        if (currentUserUid != null) {
-            firestore.collection("Add to Cart").document(currentUserUid)
-                .collection("CurrentUser")
-                .add(cartMap)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(this@DetailedActivity, "Added to cart", Toast.LENGTH_SHORT).show()
-                        finish()
-                    } else {
-                        Toast.makeText(this@DetailedActivity, "Failed to add to cart", Toast.LENGTH_SHORT).show()
-                    }
-                }
-        }
-
-
+        // Notify the user that the item has been added to the cart
+        Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show()
+    }
 
         // Use cartMap as needed
 

@@ -20,6 +20,8 @@ class Gardeningtools : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gardeningtools)
 
+
+
         recyclerView = findViewById(R.id.recyclerView)
         searchView = findViewById(R.id.search)
 
@@ -37,6 +39,7 @@ class Gardeningtools : AppCompatActivity() {
 
         val gridLayoutManager = GridLayoutManager(this, 1)
         recyclerView.layoutManager = gridLayoutManager
+
         dataList = mutableListOf()
 
         androidData = Dataclass("Camera", R.string.camera, "Java", R.drawable.bonsai,250)
@@ -57,6 +60,7 @@ class Gardeningtools : AppCompatActivity() {
         adapter = MyAdapter(this, dataList)
 
         recyclerView.adapter = adapter
+
 
     }
 
