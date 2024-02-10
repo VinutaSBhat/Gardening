@@ -16,26 +16,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.gardening.databinding.ActivityMainBinding
+
 import android.Manifest
 import android.Manifest.*
-import android.media.audiofx.EnvironmentalReverb
-import android.os.Environment
-import android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
 import androidx.annotation.RequiresApi
-import android.provider.Settings
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.gardening.databinding.ActivityMainBinding
 
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.IOException
@@ -64,6 +57,14 @@ class MainActivity : AppCompatActivity() {
     private val pReqCode = 11
     private var pickedImageUri: Uri? = null
 
+    //retrive posts
+//    private lateinit var mRecyclerView: RecyclerView
+//    private var adapter: PostAdapter? = null
+//    private var list: List<Post>? = null
+//    private var query: Query? = null
+//    private var listenerRegistration: ListenerRegistration? = null
+
+
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,7 +81,9 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.market -> replaceFragment(MarketFragment())
-                R.id.community -> replaceFragment(communityFragment())
+                R.id.community -> {
+                Toast.makeText(this,"called",Toast.LENGTH_SHORT).show()
+                    replaceFragment(CommunityFragment())}
                 R.id.profile -> replaceFragment(ProfileFragment())
 
             }
@@ -114,7 +117,59 @@ class MainActivity : AppCompatActivity() {
         inipopup()
         setupPopupImageClick()
 
+
+
+
+
+        //retrieve posts
+
+//        mRecyclerView.setHasFixedSize(true)
+//        mRecyclerView.layoutManager = LinearLayoutManager(this)
+//        val list: MutableList<Post> = mutableListOf()
+//        val adapter = PostAdapter(this@MainActivity, list, FirebaseAuth.getInstance())
+//
+//
+//        mRecyclerView.adapter = adapter
+//
+//
+//        mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                super.onScrolled(recyclerView, dx, dy)
+//                val isBottom = !mRecyclerView.canScrollVertically(1)
+//                if (isBottom) {
+//                    Toast.makeText(this@MainActivity, "Reached Bottom", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        })
+//
+//        val databaseReference = FirebaseDatabase.getInstance().getReference("images")
+//
+//        databaseReference.addValueEventListener(object : ValueEventListener {
+//            @SuppressLint("NotifyDataSetChanged")
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                list.run { clear() }
+//                for (postSnapshot in dataSnapshot.children) {
+//                    val postId = postSnapshot.key
+//                    val post = postSnapshot.getValue(Post::class.java)?.apply { postKey = postId }
+//                    if (post != null) {
+//                        list.add(post)
+//                    }
+//                }
+//                adapter.notifyDataSetChanged()
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                Toast.makeText(this@MainActivity, databaseError.message, Toast.LENGTH_SHORT).show()
+//            }
+//        })
+
+
+
+
     }
+
+
+
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
@@ -321,6 +376,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
+
+
 
 
 
