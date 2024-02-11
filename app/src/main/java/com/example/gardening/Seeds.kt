@@ -44,7 +44,7 @@ class Seeds : AppCompatActivity() {
         androidData = Dataclass("45 Variety Seeds   ", R.string.variety45, "Rs.179", R.drawable.fourtyfive,179)
         dataList.add(androidData)
 
-        androidData = Dataclass("Combo of 6 vegetable seeds", R.string.combo6, "Rs.350", R.drawable.bamboofengshui,350)
+        androidData = Dataclass("Combo of 6 vegetable seeds", R.string.combo6, "Rs.350", R.drawable.sixcombo,350)
         dataList.add(androidData)
 
 

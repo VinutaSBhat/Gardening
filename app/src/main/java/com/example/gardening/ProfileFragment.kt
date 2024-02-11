@@ -28,7 +28,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val sharedPref = context?.getSharedPreferences("addName", Context.MODE_PRIVATE)
         var edit = sharedPref?.edit()
-        val getname = sharedPref?.getString("email", "default value")
+        val getname = sharedPref?.getString("username", "default value")
         val text=view.findViewById<TextView>(R.id.userName)
 
         text.text=getname.toString()

@@ -37,9 +37,9 @@ class CommunityFragment : Fragment() {
             mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             if (adapter == null) {
             list = mutableListOf()
-            Toast.makeText(requireContext(),"before adapter",Toast.LENGTH_SHORT).show()
+
             adapter = PostAdapter(requireContext(), list!!, FirebaseAuth.getInstance())
-                Toast.makeText(requireContext(),"after adapter",Toast.LENGTH_SHORT).show()
+
             mRecyclerView.adapter = adapter
           }
 
@@ -68,7 +68,7 @@ class CommunityFragment : Fragment() {
                                     list?.add(post)
                                 }
                             }
-                            Toast.makeText(requireContext(),"on data change "+list?.get(2),Toast.LENGTH_SHORT).show()
+
                             adapter?.notifyDataSetChanged()
 
 

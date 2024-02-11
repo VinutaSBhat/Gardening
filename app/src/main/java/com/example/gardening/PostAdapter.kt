@@ -34,13 +34,13 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
         Log.d("Adapter", "onCreateViewHolder")
         val v = LayoutInflater.from(context).inflate(R.layout.each_post, parent, false)
         likeReference = database.getReference("images")
-        Toast.makeText(context,"oncreate:adapter", Toast.LENGTH_SHORT).show()
+
         return PostViewHolder(v)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         Log.d("Adapter", "onBindViewHolder: position $position")
-        Toast.makeText(context,"onbind:adapter", Toast.LENGTH_SHORT).show()
+
         val post = mList[position]
         post.picture?.let { holder.setPostPic(it) }
         post.description?.let { holder.setPostCaption(post.description ?: "") }
@@ -51,7 +51,7 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
 
         val postId = post.postKey // Assuming that postKey is the correct property
         val userId = auth.currentUser?.uid
-        Toast.makeText(context,userId, Toast.LENGTH_SHORT).show()
+
 
 
         holder.likePic.setOnClickListener {
@@ -133,7 +133,7 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
                 .error(R.drawable.error_image) // Error image resource
                 .into(postPic)
 
-            Toast.makeText(context,"load url", Toast.LENGTH_SHORT).show()
+
         }
 
         fun setPostUsername(username: String) {
@@ -146,7 +146,7 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
         fun setPostCaption(caption: String) {
             postCaption = mView.findViewById(R.id.caption_tv)
             postCaption.text = caption
-            Toast.makeText(context,"load caption", Toast.LENGTH_SHORT).show()
+
         }
     }
 }
