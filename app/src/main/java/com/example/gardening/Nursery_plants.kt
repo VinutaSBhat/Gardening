@@ -41,19 +41,19 @@ class Nursery_plants : AppCompatActivity() {
 
         dataList = mutableListOf()
 
-        androidData = Dataclass("neacmera", R.string.camera, "Java", R.drawable.bonsai,250)
+        androidData = Dataclass("Bonsai", R.string.bonsai, "Rs.250", R.drawable.bonsai,250)
         dataList.add(androidData)
 
-        androidData = Dataclass("RecyclerView", R.string.recyclerview, "Kotlin", R.drawable.bamboofengshui,350)
+        androidData = Dataclass("Bamboo Feng Shui", R.string.Bamboo_feng, "Rs.350", R.drawable.bamboofengshui,350)
         dataList.add(androidData)
 
-        androidData = Dataclass("Date Picker", R.string.date, "Java", R.drawable.desertrose,2550)
+        androidData = Dataclass("Desert Rose", R.string.Desertrose, "Rs.2550", R.drawable.desertrose,2550)
         dataList.add(androidData)
 
-        androidData = Dataclass("EditText", R.string.edit, "Kotlin", R.drawable.orchid,650)
+        androidData = Dataclass("Orchid", R.string.orchid, "Rs.650", R.drawable.orchid,650)
         dataList.add(androidData)
 
-        androidData = Dataclass("Rating Bar", R.string.rating, "Java", R.drawable.lavender,270)
+        androidData = Dataclass("Lavender", R.string.lavender, "Rs.270", R.drawable.lavender,270)
         dataList.add(androidData)
 
         adapter = MyAdapter(this, dataList)

@@ -41,20 +41,13 @@ class Seeds : AppCompatActivity() {
 
         dataList = mutableListOf()
 
-        androidData = Dataclass("Cameraaaaa", R.string.camera, "Java", R.drawable.bonsai,250)
+        androidData = Dataclass("45 Variety Seeds   ", R.string.variety45, "Rs.179", R.drawable.fourtyfive,179)
         dataList.add(androidData)
 
-        androidData = Dataclass("RecyclerView", R.string.recyclerview, "Kotlin", R.drawable.bamboofengshui,350)
+        androidData = Dataclass("Combo of 6 vegetable seeds", R.string.combo6, "Rs.350", R.drawable.bamboofengshui,350)
         dataList.add(androidData)
 
-        androidData = Dataclass("Date Picker", R.string.date, "Java", R.drawable.desertrose,2550)
-        dataList.add(androidData)
 
-        androidData = Dataclass("EditText", R.string.edit, "Kotlin", R.drawable.orchid,650)
-        dataList.add(androidData)
-
-        androidData = Dataclass("Rating Bar", R.string.rating, "Java", R.drawable.lavender,270)
-        dataList.add(androidData)
 
         adapter = MyAdapter(this, dataList)
 
