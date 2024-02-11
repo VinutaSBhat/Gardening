@@ -18,6 +18,8 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var imageSlider: ImageSlider
     private lateinit var cardView: CardView
+    private lateinit var cardView1: CardView
+    private lateinit var cardView2: CardView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +48,16 @@ class HomeFragment : Fragment() {
 
         cardView.setOnClickListener {
             context?.startActivity(Intent(context, Gardeningtools::class.java))
+        }
+        cardView1 = view.findViewById(R.id.nurseryplants)
+
+        cardView1.setOnClickListener {
+            context?.startActivity(Intent(context, Nursery_plants::class.java))
+        }
+        cardView2 = view.findViewById(R.id.seeds)
+
+        cardView2.setOnClickListener {
+            context?.startActivity(Intent(context, Seeds::class.java))
         }
 
 

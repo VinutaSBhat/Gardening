@@ -8,6 +8,18 @@
         To conform with the definition of SQL DATE, the millisecond values wrapped by a java.sql.Date instance
         must be normalized by setting the hours, minutes, seconds, and milliseconds to zero in the particular time zone with which the instance is associated.
         </string>
+
+    <string name="handprunercutter">
+        Material:Stainless Steel, Color:Colorful
+Package Contents:1 Pc Pruner Cutter
+Quality Plastic material body and Steel handles, quality blade made of high carbon steel with Ultra-fine Polishing Technology
+    </string>
+    
+    <string name="handtoolkit">
+        3 PC Gardening Tools Kit: Perfect for digging, weeding, transplanting and cultivating. The most useful gardening tools for yourself or a person who loves gardening.
+Package Content: 3 Pcs Garden tools (Hand Cultivator, Trowel, Transplanter)
+Material and Size: Iron, 17 x 4.5 cm + 17 x 3.3 cm + 15 x 4.5 cm
+    </string>
     <string name="rating">A RatingBar is an extension of SeekBar and ProgressBar that shows a rating in stars.
         The user can touch/drag or use arrow keys to set the rating when using the default size RatingBar.
         The smaller RatingBar style ( R.attr.ratingBarStyleSmall) and the larger indicator-only style

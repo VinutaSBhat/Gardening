@@ -37,6 +37,6 @@ class MyViewHolde(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     var recImage: ImageView = itemView.findViewById(R.id.imagecart)
     var recTitle: TextView = itemView.findViewById(R.id.titlecart)
-    var recprice: TextView = itemView.findViewById(R.id.price)
+    var recprice: TextView = itemView.findViewById(R.id.cartprice)
 
 }

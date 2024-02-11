@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
-class Gardeningtools : AppCompatActivity() {
-
+class Seeds : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var dataList: MutableList<Dataclass>
     private lateinit var adapter: MyAdapter
@@ -18,7 +17,7 @@ class Gardeningtools : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gardeningtools)
+        setContentView(R.layout.activity_seeds)
 
 
 
@@ -42,13 +41,20 @@ class Gardeningtools : AppCompatActivity() {
 
         dataList = mutableListOf()
 
-        androidData = Dataclass("Hand Tool Kit", R.string.handtoolkit, "Rs.399", R.drawable.handtoolkit,399)
+        androidData = Dataclass("Cameraaaaa", R.string.camera, "Java", R.drawable.bonsai,250)
         dataList.add(androidData)
 
-        androidData = Dataclass("Hand Pruner Cutter", R.string.handprunercutter, "Rs.650", R.drawable.handprunercutter,650)
+        androidData = Dataclass("RecyclerView", R.string.recyclerview, "Kotlin", R.drawable.bamboofengshui,350)
         dataList.add(androidData)
 
+        androidData = Dataclass("Date Picker", R.string.date, "Java", R.drawable.desertrose,2550)
+        dataList.add(androidData)
 
+        androidData = Dataclass("EditText", R.string.edit, "Kotlin", R.drawable.orchid,650)
+        dataList.add(androidData)
+
+        androidData = Dataclass("Rating Bar", R.string.rating, "Java", R.drawable.lavender,270)
+        dataList.add(androidData)
 
         adapter = MyAdapter(this, dataList)
 

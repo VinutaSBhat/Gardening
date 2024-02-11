@@ -5,22 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/homebg"
     tools:context=".HomeFragment">
+
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="57dp"
     android:minHeight="400dp">
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:shadowColor="@color/green"
+        android:shadowDx="12"
+        android:shadowDy="12"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/alice"
+        android:text="Explore amazing gardening products!"/>
     <androidx.cardview.widget.CardView
 
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        app:cardBackgroundColor="@color/green"
+
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
@@ -44,30 +59,28 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/abhaya_libre_medium"
+        android:fontFamily="@font/adamina"
         android:text="Choose a category"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="25dp"
-        >
+        android:textSize="30dp">
 
     </TextView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:id="@+id/gardeningtools"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
-        app:cardElevation="20dp"
-        app:cardCornerRadius="30dp">
+        app:cardElevation="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@drawable/custom_edittext"
+            android:background="@drawable/cardbg"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal">
 
@@ -76,11 +89,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="140dp"
                 android:text="Gardening Tools"
-                android:textColor="@color/green"
+                android:textColor="@color/black"
+                android:fontFamily="@font/alice"
                 android:layout_gravity="center"
-                android:textSize="50dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="10dp"
+                android:textSize="45dp"
+                android:layout_marginTop="40dp"
+
                 >
 
             </TextView>
@@ -93,24 +107,27 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
+android:id="@+id/nurseryplants"
         app:cardElevation="20dp"
-        app:cardCornerRadius="30dp">
+     >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@drawable/custom_edittext"
+            android:background="@drawable/cardbg"
             android:orientation="vertical"
+
             android:layout_gravity="center_horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:text="Nursery Plants"
-                android:textColor="@color/green"
+                android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:textSize="50dp"
-                android:layout_marginTop="30dp"
+                android:fontFamily="@font/alice"
+                android:textSize="45dp"
+                android:layout_marginTop="40dp"
                 >
 
             </TextView>
@@ -123,13 +140,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
+android:id="@+id/seeds"
         app:cardElevation="20dp"
-        app:cardCornerRadius="30dp">
+   >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@drawable/custom_edittext"
+            android:background="@drawable/cardbg"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal">
 
@@ -137,10 +155,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:text="Seeds"
-                android:textColor="@color/green"
+                android:fontFamily="@font/alice"
+                android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:textSize="50dp"
-                android:layout_marginTop="35dp"
+                android:textSize="40dp"
+                android:layout_marginTop="40dp"
                 >
 
             </TextView>
