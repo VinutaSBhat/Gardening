@@ -30,44 +30,24 @@ class CommunityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_community, container, false)
-        if (isAdded && isVisible) {
-            // Fragment is attached and visible
-            Toast.makeText(requireContext(), "onCreateView: Fragment is attached and visible", Toast.LENGTH_SHORT).show()
-        } else {
-            // Fragment is not attached or not visible
-            Toast.makeText(requireContext(), "onCreateView: Fragment is not attached or not visible", Toast.LENGTH_SHORT).show()
-        }
-        // Example of performing a fragment transaction
-//        val fragmentManager = requireActivity().supportFragmentManager
-//        val transaction = fragmentManager.beginTransaction()
 
-        // Check if the fragment already exists before replacing
-//        val existingFragment = fragmentManager.findFragmentByTag("CommunityFragment")
-//        if (existingFragment == null) {
-//            transaction.replace(R.id.frame_layout, CommunityFragment(), "CommunityFragment")
-//            transaction.addToBackStack(null)
-//            transaction.commit()
-//            Toast.makeText(requireContext(), "commited trans", Toast.LENGTH_SHORT).show()
-//        }
 
             mRecyclerView = view.findViewById(R.id.recyclerView)
             mRecyclerView.setHasFixedSize(true)
             mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             if (adapter == null) {
             list = mutableListOf()
-            Toast.makeText(requireContext(), "sending to adapter", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),"before adapter",Toast.LENGTH_SHORT).show()
             adapter = PostAdapter(requireContext(), list!!, FirebaseAuth.getInstance())
+                Toast.makeText(requireContext(),"after adapter",Toast.LENGTH_SHORT).show()
             mRecyclerView.adapter = adapter
-            Toast.makeText(requireContext(), "after adapter", Toast.LENGTH_SHORT).show()}
+          }
 
             mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     val isBottom = !mRecyclerView.canScrollVertically(1)
-                    if (isBottom) {
-                        Toast.makeText(requireContext(), "Reached Bottom", Toast.LENGTH_SHORT)
-                            .show()
-                    }
+
                 }
             })
 
@@ -88,13 +68,9 @@ class CommunityFragment : Fragment() {
                                     list?.add(post)
                                 }
                             }
-                            Toast.makeText(requireContext(), "on datachange"+ list?.size, Toast.LENGTH_SHORT)
-                                .show()
-                            Toast.makeText(requireContext(), "on datachange"+ (list?.get(1)  ), Toast.LENGTH_SHORT)
-                                .show()
+                            Toast.makeText(requireContext(),"on data change "+list?.get(2),Toast.LENGTH_SHORT).show()
                             adapter?.notifyDataSetChanged()
-                            Toast.makeText(requireContext(), "on datachange after", Toast.LENGTH_SHORT)
-                                .show()
+
 
                         }
 

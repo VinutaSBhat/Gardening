@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.gardening
 
 import android.content.Intent
@@ -7,9 +9,22 @@ import androidx.fragment.app.Fragment
 
 import android.Manifest
 import android.Manifest.*
+import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
+import android.view.Gravity
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
+import android.widget.Toolbar
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.gardening.databinding.ActivityMainBinding
 
 
@@ -21,15 +36,15 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.IOException
 import java.util.*
-import com.example.gardening.databinding.ActivityMainBinding
+
 
 
 class MainActivity : AppCompatActivity() {
-
-//    private lateinit var userName: TextView
-
-//    private lateinit var gClient: GoogleSignInClient
-//    private lateinit var gOptions: GoogleSignInOptions
+    private lateinit var popAddPost:Dialog
+    private lateinit var popupPostImage:ImageView
+    private lateinit var popupAddBtn:Button
+    private  lateinit var popupDescription:TextView
+    private lateinit var popupClickProgress:ProgressBar
 private lateinit var binding: ActivityMainBinding
 
     //add image
@@ -62,7 +77,7 @@ private lateinit var binding: ActivityMainBinding
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.cart -> replaceFragment(CartFragment())
-                R.id.community -> replaceFragment(communityFragment())
+                R.id.community -> replaceFragment(CommunityFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
 
             }
@@ -75,30 +90,83 @@ private lateinit var binding: ActivityMainBinding
         }
 
 
-//        userName = findViewById(R.id.userName)
-
-//        gOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
-//        gClient = GoogleSignIn.getClient(this, gOptions)
-
-//        val gAccount: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
-//        if (gAccount != null) {
-//            val gName = gAccount.displayName
-//            userName.text = gName
-//        }
         val button = findViewById<FloatingActionButton>(R.id.post)
         button.setOnClickListener {
             popAddPost.show()
         }
 
 
-
-
-
-        //inipopup
         inipopup()
         setupPopupImageClick()
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.frame_layout, fragment)
@@ -106,7 +174,6 @@ private lateinit var binding: ActivityMainBinding
     }
 
 
-    //initial popup
     @SuppressLint("WrongViewCast")
     fun inipopup() {
         popAddPost = Dialog(this)
@@ -116,10 +183,7 @@ private lateinit var binding: ActivityMainBinding
             Toolbar.LayoutParams.MATCH_PARENT
         )
         popAddPost.window!!.attributes.gravity = Gravity.TOP
-        val close = popAddPost.findViewById(R.id.popup_cross) as ImageView
-        close.setOnClickListener {
-            popAddPost.dismiss()
-        }
+
 
         //ini pop widgets
         popupPostImage = popAddPost.findViewById(R.id.popup_img)
@@ -135,6 +199,7 @@ private lateinit var binding: ActivityMainBinding
 
             if (popupDescription.text.toString().isNotEmpty() && pickedImageUri != null) {
                 val currentUser = FirebaseAuth.getInstance().currentUser
+                Toast.makeText(this,"if ok",Toast.LENGTH_SHORT).show()
 
                 if (pickedImageUri != null) {
                     val storageReference =
@@ -158,6 +223,7 @@ private lateinit var binding: ActivityMainBinding
                                         )
                                     }
                                     post?.let { addPost(it) }
+                                    Toast.makeText(this,"after add post",Toast.LENGTH_SHORT).show()
                                 }
                                 .addOnFailureListener { e ->
                                     showMessage("Error getting image download URL: ${e.message}")
@@ -176,42 +242,13 @@ private lateinit var binding: ActivityMainBinding
         }
     }
 
-        private fun hideProgressAndShowButton() {
-            popupClickProgress.visibility = View.INVISIBLE
-            popupAddBtn.visibility = View.VISIBLE
-        }
-
-        private fun addPost(post: PostClass) {
-            val database = FirebaseDatabase.getInstance()
-            val myRef: DatabaseReference = database.getReference("images").push()
-
-            // Get post unique ID and update post key
-            val key = myRef.key
-            if (key != null) {
-                post.run { updatePostKey(key = key) }
-            }
-
-            // Add post data to Firebase database
-            myRef.setValue(post)
-                .addOnSuccessListener {
-                    showMessage("Post Added successfully")
-                    popupClickProgress.visibility = View.INVISIBLE
-                    popupAddBtn.visibility = View.VISIBLE
-                    popAddPost.dismiss()
-                }
-                .addOnFailureListener { e ->
-                    showMessage("Error adding post: ${e.message}")
-                    popupClickProgress.visibility = View.INVISIBLE
-                    popupAddBtn.visibility = View.VISIBLE
-                }
-        }
-
-        private fun showMessage(message: String) {
-            Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
-        }
+    private fun hideProgressAndShowButton() {
+        popupClickProgress.visibility = View.INVISIBLE
+        popupAddBtn.visibility = View.VISIBLE
+    }
 
 
-        //add image from gallery
+    //add image from gallery
     @RequiresApi(Build.VERSION_CODES.R)
     private fun setupPopupImageClick() {
         addPhoto = popAddPost.findViewById(R.id.popup_addimage)
@@ -229,11 +266,10 @@ private lateinit var binding: ActivityMainBinding
         }
     }
 
-
     @RequiresApi(Build.VERSION_CODES.R)
     @Suppress("DEPRECATION")
     private fun checkAndRequestForPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (ContextCompat.checkSelfPermission(
                     this@MainActivity,
                     Manifest.permission.READ_MEDIA_IMAGES
@@ -252,7 +288,7 @@ private lateinit var binding: ActivityMainBinding
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                         ActivityCompat.requestPermissions(
                             this@MainActivity,
                             arrayOf(Manifest.permission.READ_MEDIA_IMAGES), pReqCode
@@ -287,6 +323,8 @@ private lateinit var binding: ActivityMainBinding
         startActivityForResult(galleryIntent, requestCodeGallery)
     }
 
+
+
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -305,14 +343,36 @@ private lateinit var binding: ActivityMainBinding
         }
     }
 
+    private fun addPost(post: PostClass) {
+        val database = FirebaseDatabase.getInstance()
+        Toast.makeText(this,"in add post",Toast.LENGTH_SHORT).show()
+        val myRef: DatabaseReference = database.getReference("images").push()
+        Toast.makeText(this,"images push",Toast.LENGTH_SHORT).show()
 
+        // Get post unique ID and update post key
+        val key = myRef.key
+        if (key != null) {
+            post.run { updatePostKey(key = key) }
+        }
 
+        // Add post data to Firebase database
+        myRef.setValue(post)
+            .addOnSuccessListener {
+                showMessage("Post Added successfully")
+                popupClickProgress.visibility = View.INVISIBLE
+                popupAddBtn.visibility = View.VISIBLE
+                popAddPost.dismiss()
+            }
+            .addOnFailureListener { e ->
+                showMessage("Error adding post: ${e.message}")
+                popupClickProgress.visibility = View.INVISIBLE
+                popupAddBtn.visibility = View.VISIBLE
+            }
+    }
 
-
-
-
-}
-
+    private fun showMessage(message: String) {
+        Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
+    }
 
 }
 

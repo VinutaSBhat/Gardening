@@ -39,7 +39,7 @@ class GalleryActivity : AppCompatActivity() {
         // Initialize galleryLauncher
         galleryLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                if (result.resultCode == RESULT_OK) {
+                if (result.resultCode == RESULT_OK ) {
                     // Handle the result here
                     val data: Intent? = result.data
                     handleGalleryResult(data)

@@ -46,29 +46,9 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
         post.description?.let { holder.setPostCaption(post.description ?: "") }
 
 
-
-//        val currentUserId = auth.currentUser?.uid
         post.userId?.let { post.userId ?: "" }
 
-        // Like button
-//        val postId = post.PostId
-//        holder.likePic.setOnClickListener {
-//            if (postId != null) {
-//                likeReference?.child(postId)?.addListenerForSingleValueEvent(object : ValueEventListener {
-//                    override fun onDataChange(snapshot: DataSnapshot) {
-//                        if (!snapshot.hasChild(currentUserId!!)) {
-//                            likeReference?.child(postId)?.child(currentUserId)?.setValue(true)
-//                        } else {
-//                            likeReference?.child(postId)!!.child(currentUserId).removeValue()
-//                        }
-//                    }
-//
-//                    override fun onCancelled(error: DatabaseError) {
-//                        // Handle error
-//                    }
-//                })
-//            }
-//        }
+
         val postId = post.postKey // Assuming that postKey is the correct property
         val userId = auth.currentUser?.uid
         Toast.makeText(context,userId, Toast.LENGTH_SHORT).show()
@@ -99,31 +79,6 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
 
 
 
-
-
-
-
-
-
-
-
-        // Like color change
-//        if (postId != null) {
-//            likeReference?.child(postId)?.addValueEventListener(object : ValueEventListener {
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    if (snapshot.hasChild(currentUserId!!)) {
-//                        holder.likePic.setImageResource(R.drawable.after_liked)
-//                    } else {
-//                        holder.likePic.setImageResource(R.drawable.before_liked)
-//                    }
-//                }
-//
-//                override fun onCancelled(error: DatabaseError) {
-//                    // Handle error
-//                }
-//            })
-//        }
-
         // Likes count
         if (postId != null) {
             likeReference?.child(postId)?.addValueEventListener(object : ValueEventListener {
@@ -139,34 +94,11 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
             })
         }
 
-        // Comments implementation
-//        holder.commentsPic.setOnClickListener {
-//            val commentIntent = Intent(context, CommentsActivity::class.java)
-//            commentIntent.putExtra("postid", postId)
-//            context.startActivity(commentIntent)
-//        }
-//
-//        if (currentUserId == post.user) {
-//            holder.deleteBtn.visibility = View.VISIBLE
-//            holder.deleteBtn.isClickable = true
-//            holder.deleteBtn.setOnClickListener {
-//                val alert = AlertDialog.Builder(context)
-//                alert.setTitle("Delete")
-//                    .setMessage("Are You Sure ?")
-//                    .setNegativeButton("No", null)
-//                    .setPositiveButton("Yes") { _, _ ->
-//                        if (postId != null) {
-//                            database.getReference("Posts").child(postId).removeValue()
-//                        }
-//                        notifyDataSetChanged()
-//                    }
-//                alert.show()
-//            }
-//        }
+
     }
 
     override fun getItemCount(): Int {
-        Toast.makeText(context,"getitem", Toast.LENGTH_SHORT).show()
+
         return mList.size
     }
 

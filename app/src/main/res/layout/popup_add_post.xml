@@ -36,20 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/popup_description"
         app:srcCompat="@drawable/img" />
 
-    <ImageView
-        android:id="@+id/popup_cross"
-        android:layout_width="50dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/popup_description"
-        app:layout_constraintEnd_toStartOf="@+id/popup_add"
-        app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_baseline_cancel_24"
-        android:onClick="show"
-        tools:ignore="OnClick" />
+
 
     <Button
         android:id="@+id/popup_add"

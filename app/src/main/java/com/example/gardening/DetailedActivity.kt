@@ -90,19 +90,19 @@ auth=FirebaseAuth.getInstance()
 
     private fun addedtocart() {
 
-        val cartItem = cartmodel(
-            intent.getIntExtra("Image", 0),
-            intent.getStringExtra("Title") ?: "",
-            "1", // You may set a default quantity here
-            intent.getStringExtra("Price") ?: ""
-        )
-
-        // Add the item to the cart
-        ShoppingCart.addedtocart(cartItem)
-
-        // Notify the user that the item has been added to the cart
-        Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show()
-    }
+//        val cartItem = cartmodel(
+//            intent.getIntExtra("Image", 0),
+//            intent.getStringExtra("Title") ?: "",
+//            "1", // You may set a default quantity here
+//            intent.getStringExtra("Price") ?: ""
+//        )
+//
+//        // Add the item to the cart
+//        ShoppingCart.addedtocart(cartItem)
+//
+//        // Notify the user that the item has been added to the cart
+//        Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show()
+//    }
 
         // Use cartMap as needed
 
