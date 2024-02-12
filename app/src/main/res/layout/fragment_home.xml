@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment"
-    android:background="@drawable/canva_home">
+    android:background="@drawable/canva_bg_home">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -95,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/card_canva"
+                    android:background="@drawable/canva_home"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -106,18 +106,17 @@
                         android:src="@drawable/home_tool" />
 
 
-
                     <TextView
 
                         android:layout_width="265dp"
                         android:layout_height="140dp"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="11dp"
                         android:layout_marginTop="50dp"
-                        android:layout_marginLeft="18dp"
                         android:fontFamily="@font/alice"
                         android:text="Gardening Tools"
                         android:textColor="@color/black"
-                        android:textSize="34dp"
+                        android:textSize="32dp"
 
                         >
 
@@ -139,7 +138,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:background="@drawable/card_canva"
+                    android:background="@drawable/canva_home"
                     android:orientation="horizontal"
 
                     android:layout_gravity="center_horizontal">
@@ -159,9 +158,9 @@
                         android:textColor="@color/black"
                         android:layout_gravity="center"
                         android:fontFamily="@font/alice"
-                        android:textSize="34dp"
-                        android:layout_marginTop="41dp"
-                        android:layout_marginLeft="18dp"
+                        android:textSize="33dp"
+                        android:layout_marginTop="31dp"
+                        android:layout_marginLeft="13dp"
                         >
 
                     </TextView>
@@ -182,7 +181,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:background="@drawable/card_canva"
+                    android:background="@drawable/canva_home"
                     android:orientation="horizontal"
                     android:layout_gravity="center_horizontal">
 
@@ -205,7 +204,7 @@
                         android:layout_gravity="center"
                         android:textSize="33dp"
                         android:layout_marginTop="37dp"
-                        android:layout_marginLeft="25dp"
+                        android:layout_marginLeft="19dp"
                         >
 
                     </TextView>

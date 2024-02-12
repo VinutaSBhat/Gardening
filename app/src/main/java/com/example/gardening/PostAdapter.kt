@@ -68,9 +68,11 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
                             )
                             likesRef.child(userId).setValue(likesMap)
                             holder.likePic.setImageDrawable(context.getDrawable(R.drawable.after_liked))
+
                         } else {
                             likesRef.child(userId).removeValue()
                             holder.likePic.setImageDrawable(context.getDrawable(R.drawable.before_liked))
+
                         }
                     }
 
@@ -86,19 +88,20 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
 
 
         // Likes count
-        if (postId != null) {
-            likeReference?.child(postId)?.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val count = snapshot.childrenCount.toInt()
-                    holder.setPostLikes(count)
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                     Toast.makeText(context,"database error", Toast.LENGTH_SHORT).show()
-
-                }
-            })
-        }
+//        if (postId != null) {
+//            likeReference?.child(postId)?.addValueEventListener(object : ValueEventListener {
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                   val count = snapshot.childrenCount.toInt()
+//                    Toast.makeText(context,count,Toast.LENGTH_SHORT).show()
+//                    holder.setPostLikes(count)
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                     Toast.makeText(context,"database error", Toast.LENGTH_SHORT).show()
+//
+//                }
+//            })
+//        }
 
 
     }

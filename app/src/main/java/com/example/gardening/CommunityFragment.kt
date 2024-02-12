@@ -26,12 +26,13 @@ class CommunityFragment : Fragment() {
     private var valueEventListener: ValueEventListener? = null
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_community, container, false)
-
+            val progress=view.findViewById<ProgressBar>(R.id.progress)
     val progressbar=view.findViewById<ProgressBar>(R.id.progress)
             mRecyclerView = view.findViewById(R.id.recyclerView)
             mRecyclerView.setHasFixedSize(true)
@@ -71,6 +72,7 @@ class CommunityFragment : Fragment() {
                             }
 
                             adapter?.notifyDataSetChanged()
+                            progress.visibility=View.INVISIBLE
 
             progressbar.visibility=View.INVISIBLE
                         }
