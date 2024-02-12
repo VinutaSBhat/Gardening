@@ -45,6 +45,8 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
         post.picture?.let { holder.setPostPic(it) }
         post.description?.let { holder.setPostCaption(post.description ?: "") }
 
+        holder.setPostUsername()
+
 
         post.userId?.let { post.userId ?: "" }
 
@@ -141,9 +143,16 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
 
         }
 
-        fun setPostUsername(username: String) {
+        @SuppressLint("CommitPrefEdits")
+        fun setPostUsername() {
             postUsername = mView.findViewById(R.id.username_tv)
-            postUsername.text = username
+
+
+            val sharedPref = context.getSharedPreferences("addName", Context.MODE_PRIVATE)
+            var edit = sharedPref?.edit()
+            val getname = sharedPref?.getString("username", "default value")
+
+            postUsername.text=getname.toString()
 
         }
 

@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/each_post_id"
-    android:paddingBottom="7dp">
+    android:paddingBottom="7dp"
+    android:background="@color/white">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="380dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@color/white"
@@ -23,7 +24,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/canvabg2">
+            android:background="@drawable/canvabg1">
 
 
             <TextView
@@ -64,7 +65,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Caption"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/user_post" />
 
@@ -72,23 +73,23 @@
                 android:id="@+id/like_btn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/caption_tv"
                 app:srcCompat="@drawable/before_liked" />
 
             <TextView
                 android:id="@+id/like_count_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="12dp"
                 android:text="0 Likes"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/like_btn"
-                app:layout_constraintTop_toBottomOf="@+id/caption_tv" />
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/like_btn" />
 
             <ImageView
                 android:id="@+id/comments_post"
