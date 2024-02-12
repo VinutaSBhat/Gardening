@@ -4,11 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CartFragment">
+    tools:context=".CartFragment"
+    android:background="@drawable/leaf_hori">
 
    <androidx.recyclerview.widget.RecyclerView
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:id="@+id/cartfr"/>
+       android:id="@+id/cartfr"
+
+       android:layout_marginTop="45dp"/>
 
 </FrameLayout>

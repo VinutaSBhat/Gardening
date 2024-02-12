@@ -65,7 +65,7 @@ class Nursery_plants : AppCompatActivity() {
 
     private fun searchList(text: String) {
         val dataSearchList = dataList.filter {
-            it.dataTitle.toLowerCase(Locale.getDefault()).contains(text.toLowerCase(Locale.getDefault()))
+            it.dataTitle.lowercase(Locale.getDefault()).contains(text.lowercase(Locale.getDefault()))
         }
         if (dataSearchList.isEmpty()) {
             Toast.makeText(this, "Not Found", Toast.LENGTH_SHORT).show()

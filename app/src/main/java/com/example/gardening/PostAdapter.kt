@@ -65,8 +65,10 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
                                 "timestamp" to ServerValue.TIMESTAMP
                             )
                             likesRef.child(userId).setValue(likesMap)
+                            holder.likePic.setImageDrawable(context.getDrawable(R.drawable.after_liked))
                         } else {
                             likesRef.child(userId).removeValue()
+                            holder.likePic.setImageDrawable(context.getDrawable(R.drawable.before_liked))
                         }
                     }
 
@@ -75,7 +77,9 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
                     }
                 })
             }
+
         }
+
 
 
 
@@ -132,6 +136,7 @@ class PostAdapter(private val context: Context, private val mList: List<Post>, p
                 // Placeholder image resource
                 .error(R.drawable.error_image) // Error image resource
                 .into(postPic)
+            postPic.clipToOutline = true
 
 
         }

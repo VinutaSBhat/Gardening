@@ -91,7 +91,7 @@ private lateinit var binding: ActivityMainBinding
 
 
         val button = findViewById<FloatingActionButton>(R.id.post)
-        button.setOnClickListener {
+        button?.setOnClickListener {
             popAddPost.show()
         }
 
@@ -199,7 +199,7 @@ private lateinit var binding: ActivityMainBinding
 
             if (popupDescription.text.toString().isNotEmpty() && pickedImageUri != null) {
                 val currentUser = FirebaseAuth.getInstance().currentUser
-                Toast.makeText(this,"if ok",Toast.LENGTH_SHORT).show()
+
 
                 if (pickedImageUri != null) {
                     val storageReference =
@@ -223,7 +223,7 @@ private lateinit var binding: ActivityMainBinding
                                         )
                                     }
                                     post?.let { addPost(it) }
-                                    Toast.makeText(this,"after add post",Toast.LENGTH_SHORT).show()
+
                                 }
                                 .addOnFailureListener { e ->
                                     showMessage("Error getting image download URL: ${e.message}")
@@ -345,9 +345,8 @@ private lateinit var binding: ActivityMainBinding
 
     private fun addPost(post: PostClass) {
         val database = FirebaseDatabase.getInstance()
-        Toast.makeText(this,"in add post",Toast.LENGTH_SHORT).show()
+
         val myRef: DatabaseReference = database.getReference("images").push()
-        Toast.makeText(this,"images push",Toast.LENGTH_SHORT).show()
 
         // Get post unique ID and update post key
         val key = myRef.key

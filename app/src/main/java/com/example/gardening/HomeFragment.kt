@@ -6,17 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ProgressBar
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 
 
+
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+
     private lateinit var imageSlider: ImageSlider
     private lateinit var cardView: CardView
     private lateinit var cardView1: CardView
@@ -60,6 +60,9 @@ class HomeFragment : Fragment() {
         cardView2.setOnClickListener {
             context?.startActivity(Intent(context, Seeds::class.java))
         }
+
+
+
 
 
 

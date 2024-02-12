@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lavender">#8692f7</color>
-    <color name="green">#069124</color>
+    <color name="green">#FF5FA517</color>
+    <color name="reddish">#FF96C0</color>
     <color name="neongreen">#06E436</color>
 </resources>
