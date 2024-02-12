@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,7 +32,7 @@ class CommunityFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_community, container, false)
 
-
+    val progressbar=view.findViewById<ProgressBar>(R.id.progress)
             mRecyclerView = view.findViewById(R.id.recyclerView)
             mRecyclerView.setHasFixedSize(true)
             mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -71,7 +72,7 @@ class CommunityFragment : Fragment() {
 
                             adapter?.notifyDataSetChanged()
 
-
+            progressbar.visibility=View.INVISIBLE
                         }
 
                         override fun onCancelled(databaseError: DatabaseError) {

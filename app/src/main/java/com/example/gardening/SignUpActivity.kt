@@ -31,23 +31,29 @@ class SignUpActivity : AppCompatActivity() {
         signupButton = findViewById(R.id.signup_button)
         loginRedirectText = findViewById(R.id.loginRedirectText)
         username=findViewById(R.id.usernamee)
+        val progressbar=findViewById<ProgressBar>(R.id.loginprogress)
         var edit = sharedPref.edit()
         signupButton.setOnClickListener {
 
 
-
+            progressbar.visibility=View.VISIBLE
             val user = signupEmail.text.toString().trim()
             val pass = signupPassword.text.toString().trim()
 
             if (user.isEmpty()) {
                 signupEmail.error = "Email cannot be empty"
+                progressbar.visibility=View.INVISIBLE
             }
             if (pass.isEmpty()) {
                 signupPassword.error = "Password cannot be empty"
+                progressbar.visibility=View.INVISIBLE
             } else {
                 auth.createUserWithEmailAndPassword(user, pass)
                     .addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
+
                         if (task.isSuccessful) {
+
+
                             edit.putString("username",username.text.toString())
                             edit.commit()
 
@@ -58,6 +64,7 @@ class SignUpActivity : AppCompatActivity() {
                             ).show()
                             startActivity(Intent(this@SignUpActivity, LoginActivity::class.java))
                         } else {
+                            progressbar.visibility=View.INVISIBLE
                             Toast.makeText(
                                 this@SignUpActivity,
                                 "SignUp Failed" + task.exception?.message,

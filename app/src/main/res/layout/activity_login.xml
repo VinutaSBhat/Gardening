@@ -50,12 +50,13 @@
                 android:textColor="@color/black"
                 android:drawablePadding="8dp"/>
 
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/login_password"
                 android:background="@drawable/custom_edittext"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:hint="Password"
@@ -98,7 +99,13 @@
                 android:textSize="18sp" />
 
         </LinearLayout>
-
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="150dp"
+            android:textAlignment="center"
+            android:id="@+id/loginprogress"
+        android:visibility="invisible"/>
     </androidx.cardview.widget.CardView>
     </ScrollView>
 </LinearLayout>

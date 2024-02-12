@@ -10,6 +10,7 @@ import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
@@ -53,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
         forgotPassword = findViewById(R.id.forgot_password)
 
 
-
+val progressbar=findViewById<ProgressBar>(R.id.loginprogress)
 
         auth = FirebaseAuth.getInstance()
 
@@ -67,18 +68,23 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             val email = loginEmail.text.toString()
             val pass = loginPassword.text.toString()
-
+            progressbar.visibility=View.VISIBLE
             if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 if (!pass.isEmpty()) {
 
                     auth.signInWithEmailAndPassword(email, pass)
                         .addOnSuccessListener(OnSuccessListener<AuthResult> {
+
                             Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                             finish()
                         }).addOnFailureListener(OnFailureListener {
                             Toast.makeText(this@LoginActivity, "Login Failed", Toast.LENGTH_SHORT).show()
-                        })
+                            progressbar.visibility=View.INVISIBLE
+                        }
+
+                        )
+
                 } else {
                     loginPassword.setError("Empty fields are not allowed")
                 }
